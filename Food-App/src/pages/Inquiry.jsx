@@ -49,8 +49,13 @@ export default function Inquiry() {
       <section className="px-[8vw] pb-16 md:pb-24">
         <RevealSection>
           <SectionLabel label="Contact" number={1} />
-          <h1 className="font-heading text-[10vw] md:text-[4vw] uppercase leading-[0.85] tracking-tighter text-foreground">Get in Touch</h1>
-          <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">Whether you need food resources, want to donate, volunteer, or list your organization — we're here to help.</p>
+          <h1 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">Get in Touch</h1>
+          <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">Submit an inquiry and we'll connect you with the right organization. Your message is stored locally for this demo — in production, it would be routed to the relevant food bank or community partner based on your ZIP code and role.</p>
+          <div className="mt-4 p-4 bg-card border border-border rounded-md max-w-xl">
+            <p className="font-body text-sm text-muted-foreground leading-relaxed">
+              <span className="font-heading text-foreground">Need immediate help?</span> Call <a href="tel:211" className="text-accent underline">2-1-1</a> (Maryland's free social services hotline) or visit <a href="https://www.capitalareafoodbank.org/find-food/" target="_blank" rel="noopener noreferrer" className="text-accent underline">capitalareafoodbank.org</a> to find food near you right now.
+            </p>
+          </div>
         </RevealSection>
       </section>
       <section className="px-[8vw] pb-24 md:pb-40">

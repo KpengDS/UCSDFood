@@ -1,20 +1,24 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { X, ArrowLeft, Menu } from "lucide-react";
-
-const NAV_ITEMS = [
-  { label: "Find Food", path: "/families", desc: "Search by ZIP code" },
-  { label: "Events", path: "/events", desc: "Distribution calendar" },
-  { label: "Donors", path: "/donors", desc: "Give food or funds" },
-  { label: "Volunteers", path: "/volunteers", desc: "Lend a hand" },
-  { label: "Resources", path: "/resources", desc: "Data sources" },
-  { label: "Contact", path: "/inquiry", desc: "Get in touch" },
-];
+import { X, ArrowLeft, Menu, Globe } from "lucide-react";
+import { useLanguage, LANGUAGES } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [showLang, setShowLang] = useState(false);
   const location = useLocation();
+  const { lang, setLang } = useLanguage();
   const isHome = location.pathname === "/";
+
+  const NAV_ITEMS = [
+    { label: t(lang, "navFindFood"), path: "/families", desc: t(lang, "navFindFoodDesc") },
+    { label: t(lang, "navEvents"), path: "/events", desc: t(lang, "navEventsDesc") },
+    { label: t(lang, "navDonors"), path: "/donors", desc: t(lang, "navDonorsDesc") },
+    { label: t(lang, "navVolunteers"), path: "/volunteers", desc: t(lang, "navVolunteersDesc") },
+    { label: t(lang, "navResources"), path: "/resources", desc: t(lang, "navResourcesDesc") },
+    { label: t(lang, "navContact"), path: "/inquiry", desc: t(lang, "navContactDesc") },
+  ];
 
   useEffect(() => {
     setIsOpen(false);
@@ -69,14 +73,40 @@ export default function Navigation() {
             Sustainable Food Hub
           </Link>
         </div>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
-          aria-label="Open navigation menu"
-        >
-          <span className="hidden sm:inline">Menu</span>
-          <Menu className="w-5 h-5" />
-        </button>
+        <div className="flex items-center gap-3">
+          {/* Language picker */}
+          <div className="relative">
+            <button
+              onClick={() => setShowLang(!showLang)}
+              className="flex items-center gap-1.5 font-body text-xs text-muted-foreground hover:text-foreground transition-colors px-2 py-1 rounded border border-transparent hover:border-border"
+            >
+              <Globe className="w-3.5 h-3.5" />
+              <span>{LANGUAGES.find((l) => l.code === lang)?.flag}</span>
+            </button>
+            {showLang && (
+              <div className="absolute right-0 top-full mt-1 bg-card border border-border rounded-md shadow-lg z-50 min-w-[140px]">
+                {LANGUAGES.map((l) => (
+                  <button
+                    key={l.code}
+                    onClick={() => { setLang(l.code); setShowLang(false); }}
+                    className={`w-full text-left px-3 py-2 flex items-center gap-2 text-sm hover:bg-accent/10 transition-colors ${lang === l.code ? "text-accent font-medium" : "text-foreground"}`}
+                  >
+                    <span>{l.flag}</span>
+                    <span className="font-body">{l.label}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+          <button
+            onClick={() => setIsOpen(true)}
+            className="flex items-center gap-2 font-body text-sm text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Open navigation menu"
+          >
+            <span className="hidden sm:inline">{t(lang, "menu")}</span>
+            <Menu className="w-5 h-5" />
+          </button>
+        </div>
       </header>
 
       {/* Full-screen menu overlay — grid layout */}

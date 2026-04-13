@@ -1,6 +1,8 @@
 import { Outlet } from "react-router-dom";
 import Navigation from "./Navigation";
 import StructuralLines from "./StructuralLines";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 
 export default function Layout() {
   return (
@@ -16,15 +18,16 @@ export default function Layout() {
 }
 
 function Footer() {
+  const { lang } = useLanguage();
   return (
     <footer className="relative border-t border-border px-[8vw] py-16 md:py-24">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
         <div className="md:col-span-5">
           <h4 className="font-heading text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Sustainable Food Hub
+            {t(lang, "siteName")}
           </h4>
           <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-sm">
-            A data-driven platform connecting residents across Maryland, Virginia, and Washington DC with verified food assistance programs, distribution events, and volunteer opportunities.
+            {t(lang, "footerDesc")}
           </p>
         </div>
         <div className="md:col-span-3 md:col-start-7">

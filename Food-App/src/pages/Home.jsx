@@ -3,51 +3,24 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ChevronDown, Search, Heart, Users } from "lucide-react";
 import { foodEvents } from "@/data/foodData";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 import RevealSection from "../components/RevealSection";
 import SectionLabel from "../components/SectionLabel";
 import EventCard from "../components/EventCard";
-import StakeholderCard from "../components/StakeholderCard";
 
 // Images from Unsplash (unsplash.com) — free under Unsplash License
 const HERO_IMG =
   "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=80"; // Ella Olsson — warm food spread
-const FAMILIES_IMG =
-  "https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&q=80"; // Brooke Lark
-const DONORS_IMG =
-  "https://images.unsplash.com/photo-1578357078586-491adf1aa5ba?w=800&q=80"; // Levi Meir Clancy
-const VOLUNTEERS_IMG =
-  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80"; // Joel Muniz
-const ABOUT_IMG =
-  "https://images.unsplash.com/photo-1542838132-92c53300491e?w=800&q=80"; // Nrd
 
 export default function Home() {
   const events = foodEvents.slice(0, 6);
+  const { lang } = useLanguage();
 
   const scrollToContent = () => {
     const el = document.getElementById("mission");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
-
-  const stakeholders = [
-    {
-      title: "Families",
-      description: "Find free food distribution events near you by ZIP code or city.",
-      linkTo: "/families",
-      image: FAMILIES_IMG,
-    },
-    {
-      title: "Donors",
-      description: "Discover organizations accepting food and monetary donations.",
-      linkTo: "/donors",
-      image: DONORS_IMG,
-    },
-    {
-      title: "Volunteers",
-      description: "Browse volunteer opportunities at food banks and distribution sites.",
-      linkTo: "/volunteers",
-      image: VOLUNTEERS_IMG,
-    },
-  ];
 
   return (
     <div className="min-h-screen">
@@ -69,13 +42,13 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-body text-sm tracking-wide text-accent block mb-4">
-              DC · Maryland · Virginia
+              {t(lang, "tagline")}
             </span>
             <h1 className="font-heading text-5xl md:text-7xl leading-tight text-foreground">
-              Sustainable Food Hub
+              {t(lang, "siteName")}
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground mt-6 leading-relaxed max-w-lg">
-              Verified food assistance data from 20+ public sources — helping families find meals, donors target impact, and volunteers connect with organizations across the DMV.
+              {t(lang, "heroDesc")}
             </p>
           </motion.div>
 
@@ -90,21 +63,21 @@ export default function Home() {
               className="inline-flex items-center justify-center gap-2 font-heading text-sm px-6 py-3 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-all whitespace-nowrap"
             >
               <Search className="w-4 h-4" />
-              Find Food Near You
+              {t(lang, "findFood")}
             </Link>
             <Link
               to="/donors"
               className="inline-flex items-center justify-center gap-2 font-heading text-sm px-6 py-3 border border-border text-foreground rounded-md hover:border-accent hover:text-accent transition-all whitespace-nowrap"
             >
               <Heart className="w-4 h-4" />
-              Donate
+              {t(lang, "donate")}
             </Link>
             <Link
               to="/volunteers"
               className="inline-flex items-center justify-center gap-2 font-heading text-sm px-6 py-3 border border-border text-foreground rounded-md hover:border-accent hover:text-accent transition-all whitespace-nowrap"
             >
               <Users className="w-4 h-4" />
-              Volunteer
+              {t(lang, "volunteer")}
             </Link>
           </motion.div>
         </div>
@@ -126,22 +99,22 @@ export default function Home() {
         <div className="px-[8vw] py-8 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div>
             <span className="font-heading text-2xl md:text-3xl text-accent">1.5M</span>
-            <p className="font-body text-xs text-muted-foreground mt-1">DMV residents food-insecure</p>
+            <p className="font-body text-xs text-muted-foreground mt-1">{t(lang, "stat1Label")}</p>
             <p className="font-body text-[10px] text-muted-foreground/60">Source: Capital Area Food Bank 2024</p>
           </div>
           <div>
             <span className="font-heading text-2xl md:text-3xl text-accent">286+</span>
-            <p className="font-body text-xs text-muted-foreground mt-1">MD Food Bank partner sites</p>
+            <p className="font-body text-xs text-muted-foreground mt-1">{t(lang, "stat2Label")}</p>
             <p className="font-body text-[10px] text-muted-foreground/60">Source: mdfoodbank.org</p>
           </div>
           <div>
             <span className="font-heading text-2xl md:text-3xl text-accent">854K</span>
-            <p className="font-body text-xs text-muted-foreground mt-1">Virginia SNAP recipients</p>
+            <p className="font-body text-xs text-muted-foreground mt-1">{t(lang, "stat3Label")}</p>
             <p className="font-body text-[10px] text-muted-foreground/60">Source: VA Federation of Food Banks</p>
           </div>
           <div>
             <span className="font-heading text-2xl md:text-3xl text-accent">20+</span>
-            <p className="font-body text-xs text-muted-foreground mt-1">Public data sources used</p>
+            <p className="font-body text-xs text-muted-foreground mt-1">{t(lang, "stat4Label")}</p>
             <p className="font-body text-[10px] text-muted-foreground/60">See Resources page</p>
           </div>
         </div>
@@ -166,18 +139,41 @@ export default function Home() {
         </RevealSection>
       </section>
 
-      {/* Stakeholder Pathways */}
+      {/* Stakeholder Pathways — replaced with credible content */}
       <section className="px-[8vw] py-16 md:py-24 border-t border-border">
         <RevealSection>
-          <SectionLabel label="Get Involved" number={2} />
-          <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-10">
-            Choose Your Path
+          <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">
+            The Reality of Hunger in the DMV
           </h2>
+          <p className="font-body text-base text-muted-foreground max-w-3xl leading-relaxed">
+            Despite being one of the wealthiest regions in the country, the DC-Maryland-Virginia area faces significant food insecurity. According to a <a href="https://health.georgetown.edu/news-story/new-report-from-capital-area-food-bank-identifies-troubling-trends-in-food-insecurity/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">2025 Capital Area Food Bank report</a>, 22% of adults in the region are experiencing very low food security — meaning they regularly skip meals or eat smaller portions. That's roughly 820,000 adults.
+          </p>
         </RevealSection>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {stakeholders.map((s, i) => (
-            <StakeholderCard key={s.title} {...s} index={i} />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+          <RevealSection delay={0.1}>
+            <div className="border border-border rounded-md p-6">
+              <h3 className="font-heading text-lg text-foreground">Maryland</h3>
+              <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
+                The <a href="https://mdfoodbank.org/hunger-in-maryland/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Maryland Food Bank</a> reports that 1 in 3 Marylanders face hunger. In Baltimore City, 55.8% of families struggle to afford basic needs. The state's cost of living outpaces wage growth — 3.1% vs 2.7%.
+              </p>
+            </div>
+          </RevealSection>
+          <RevealSection delay={0.2}>
+            <div className="border border-border rounded-md p-6">
+              <h3 className="font-heading text-lg text-foreground">Washington DC</h3>
+              <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
+                DC has an 11% concentrated food desert rate. Wards 7 and 8 are hardest hit — 51% and 31% food desert rates respectively. <a href="https://breadforthecity.org/food/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Bread for the City</a> alone serves 8,400+ neighbors monthly from two pantry locations.
+              </p>
+            </div>
+          </RevealSection>
+          <RevealSection delay={0.3}>
+            <div className="border border-border rounded-md p-6">
+              <h3 className="font-heading text-lg text-foreground">Virginia</h3>
+              <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
+                The <a href="https://vafoodbanks.org/virginians-facing-hunger-insights-from-feeding-americas-map-the-meal-gap-report/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Virginia Federation of Food Banks</a> reports an 11.1% hunger rate — 1 in 9 residents. Over 854,000 Virginians rely on SNAP, and 252,480 children experience food insecurity.
+              </p>
+            </div>
+          </RevealSection>
         </div>
       </section>
 
@@ -213,56 +209,25 @@ export default function Home() {
         )}
       </section>
 
-      {/* About / Data section */}
-      <section className="px-[8vw] py-20 md:py-32 border-t border-border">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-          <div className="md:col-span-5">
-            <RevealSection>
-              <div className="aspect-[3/4] overflow-hidden rounded-md">
-                <img
-                  src={ABOUT_IMG}
-                  alt="Fresh produce — photo by Nrd on Unsplash"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </RevealSection>
-          </div>
-          <div className="md:col-span-6 md:col-start-7 flex flex-col justify-center">
-            <RevealSection delay={0.1}>
-              <SectionLabel label="The Data" number={4} />
-              <h2 className="font-heading text-2xl md:text-4xl leading-tight text-foreground">
-                The scale of food insecurity in the DMV
-              </h2>
-              <p className="font-body text-base text-muted-foreground mt-6 leading-relaxed">
-                Feeding America's <a href="https://feedingamerica.org/about-us/press-room/Map-the-Meal-Gap-2025" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Map the Meal Gap 2025</a> estimates that 47 million people experienced food insecurity nationally in 2023. In the DMV, a <a href="https://health.georgetown.edu/news-story/new-report-from-capital-area-food-bank-identifies-troubling-trends-in-food-insecurity/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Capital Area Food Bank report</a> found 37% of households — roughly 1.5 million people — faced food insecurity in 2024.
-              </p>
-              <p className="font-body text-base text-muted-foreground mt-4 leading-relaxed">
-                The <a href="https://mdfoodbank.org/hunger-in-maryland/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Maryland Food Bank</a> reports that 1 in 3 Marylanders face hunger, while the <a href="https://vafoodbanks.org/virginians-facing-hunger-insights-from-feeding-americas-map-the-meal-gap-report/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Virginia Federation of Food Banks</a> reports an 11.1% hunger rate with over 252,000 children affected.
-              </p>
-            </RevealSection>
-          </div>
-        </div>
-      </section>
-
       {/* CTA */}
       <section className="px-[8vw] py-28 md:py-40 border-t border-border bg-card">
         <RevealSection>
           <div className="text-center max-w-3xl mx-auto">
             <h2 className="font-heading text-5xl md:text-7xl leading-tight text-foreground">
-              Ready to make a difference?
+              {t(lang, "ctaTitle")}
             </h2>
             <p className="font-body text-lg md:text-xl text-muted-foreground mt-8 leading-relaxed">
-              Whether you need food assistance, want to donate, or can volunteer your time — there's a place for you here.
+              {t(lang, "ctaDesc")}
             </p>
             <div className="mt-12 flex flex-row flex-wrap items-center justify-center gap-4">
               <Link to="/families" className="font-heading text-base px-10 py-4 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-all whitespace-nowrap">
-                Find Food
+                {t(lang, "findFood")}
               </Link>
               <Link to="/donors" className="font-heading text-base px-10 py-4 border-2 border-foreground text-foreground rounded-md hover:bg-foreground hover:text-background transition-all whitespace-nowrap">
-                Donate
+                {t(lang, "donate")}
               </Link>
               <Link to="/volunteers" className="font-heading text-base px-10 py-4 border-2 border-foreground text-foreground rounded-md hover:bg-foreground hover:text-background transition-all whitespace-nowrap">
-                Volunteer
+                {t(lang, "volunteer")}
               </Link>
             </div>
           </div>
