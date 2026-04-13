@@ -4,6 +4,8 @@ import SectionLabel from "../components/SectionLabel";
 import RevealSection from "../components/RevealSection";
 import EventCard from "../components/EventCard";
 import { foodEvents } from "@/data/foodData";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 
 // Build searchable options from event data
 function getSearchOptions(events) {
@@ -17,6 +19,7 @@ function getSearchOptions(events) {
 }
 
 export default function Events() {
+  const { lang } = useLanguage();
   const events = foodEvents;
   const searchOptions = getSearchOptions(events);
   const [query, setQuery] = useState("");
@@ -63,9 +66,9 @@ export default function Events() {
     <div className="min-h-screen pt-24 md:pt-32">
       <section className="px-[8vw] pb-16 md:pb-24">
         <RevealSection>
-          <SectionLabel label="Distribution Events" number={1} />
-          <h1 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">Event Archive</h1>
-          <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">Browse food distribution events across DC, Maryland, and Virginia. Search by ZIP code, city, or organization name.</p>
+          <SectionLabel label={t(lang, "distributionEvents")} number={1} />
+          <h1 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">{t(lang, "distributionEvents")}</h1>
+          <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">{t(lang, "searchDesc")}</p>
         </RevealSection>
         <RevealSection delay={0.2}>
           <div className="relative mt-10 max-w-md">
@@ -73,7 +76,7 @@ export default function Events() {
             <input
               ref={inputRef}
               type="text"
-              placeholder="Search by ZIP, city, or organizer..."
+              placeholder={t(lang, "searchPlaceholder")}
               value={query}
               onChange={(e) => { setQuery(e.target.value); setShowDropdown(true); }}
               onFocus={() => { if (query.length > 0) setShowDropdown(true); }}
@@ -102,7 +105,7 @@ export default function Events() {
               onClick={() => setQuery("")}
               className="mt-3 font-body text-xs text-muted-foreground hover:text-accent transition-colors"
             >
-              ✕ Clear search
+              ✕ {t(lang, "clearSearch")}
             </button>
           )}
         </RevealSection>
@@ -110,12 +113,12 @@ export default function Events() {
 
       <section className="px-[8vw] pb-24 md:pb-40">
         <div className="flex items-end justify-between mb-8">
-          <span className="font-body text-sm text-muted-foreground">{filtered.length} event{filtered.length !== 1 ? "s" : ""}</span>
+          <span className="font-body text-sm text-muted-foreground">{filtered.length} {filtered.length !== 1 ? t(lang, "results") : t(lang, "result")}</span>
         </div>
         {filtered.length === 0 ? (
           <div className="text-center py-24">
-            <p className="font-heading text-lg text-muted-foreground">{query ? `No events match "${query}"` : "No events yet"}</p>
-            <p className="font-body text-sm text-muted-foreground mt-2">Try a different search term</p>
+            <p className="font-heading text-lg text-muted-foreground">{query ? `${t(lang, "noResults")} "${query}"` : t(lang, "noResults")}</p>
+            <p className="font-body text-sm text-muted-foreground mt-2">{t(lang, "tryDifferentSearch")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

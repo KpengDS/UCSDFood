@@ -87,6 +87,7 @@
   html, body {
     overscroll-behavior-x: none;
     overflow-x: hidden;
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground font-body;

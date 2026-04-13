@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero — clean, no parallax */}
-      <section className="relative min-h-screen flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40 z-10" />
           <img
@@ -127,12 +127,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-7">
               <h2 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">
-                Food assistance data is scattered — we centralize it
+                {t(lang, "missionTitle")}
               </h2>
             </div>
             <div className="md:col-span-4 md:col-start-9 flex items-end">
               <p className="font-body text-base text-muted-foreground leading-relaxed">
-                Information about food pantries, distribution events, and assistance programs is spread across dozens of government portals, nonprofit sites, and community boards. Sustainable Food Hub aggregates verified public data from sources like the Maryland Food Bank, Capital Area Food Bank, USDA, and county social services into one searchable interface.
+                {t(lang, "missionDesc")}
               </p>
             </div>
           </div>
@@ -143,34 +143,34 @@ export default function Home() {
       <section className="px-[8vw] py-16 md:py-24 border-t border-border">
         <RevealSection>
           <h2 className="font-heading text-2xl md:text-3xl text-foreground mb-4">
-            The Reality of Hunger in the DMV
+            {t(lang, "dmvTitle")}
           </h2>
           <p className="font-body text-base text-muted-foreground max-w-3xl leading-relaxed">
-            Despite being one of the wealthiest regions in the country, the DC-Maryland-Virginia area faces significant food insecurity. According to a <a href="https://health.georgetown.edu/news-story/new-report-from-capital-area-food-bank-identifies-troubling-trends-in-food-insecurity/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">2025 Capital Area Food Bank report</a>, 22% of adults in the region are experiencing very low food security — meaning they regularly skip meals or eat smaller portions. That's roughly 820,000 adults.
+            {t(lang, "dmvDesc")}
           </p>
         </RevealSection>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
           <RevealSection delay={0.1}>
             <div className="border border-border rounded-md p-6">
-              <h3 className="font-heading text-lg text-foreground">Maryland</h3>
+              <h3 className="font-heading text-lg text-foreground">{t(lang, "maryland")}</h3>
               <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
-                The <a href="https://mdfoodbank.org/hunger-in-maryland/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Maryland Food Bank</a> reports that 1 in 3 Marylanders face hunger. In Baltimore City, 55.8% of families struggle to afford basic needs. The state's cost of living outpaces wage growth — 3.1% vs 2.7%.
+                {t(lang, "marylandDesc")}
               </p>
             </div>
           </RevealSection>
           <RevealSection delay={0.2}>
             <div className="border border-border rounded-md p-6">
-              <h3 className="font-heading text-lg text-foreground">Washington DC</h3>
+              <h3 className="font-heading text-lg text-foreground">{t(lang, "washingtonDC")}</h3>
               <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
-                DC has an 11% concentrated food desert rate. Wards 7 and 8 are hardest hit — 51% and 31% food desert rates respectively. <a href="https://breadforthecity.org/food/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Bread for the City</a> alone serves 8,400+ neighbors monthly from two pantry locations.
+                {t(lang, "dcDesc")}
               </p>
             </div>
           </RevealSection>
           <RevealSection delay={0.3}>
             <div className="border border-border rounded-md p-6">
-              <h3 className="font-heading text-lg text-foreground">Virginia</h3>
+              <h3 className="font-heading text-lg text-foreground">{t(lang, "virginia")}</h3>
               <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">
-                The <a href="https://vafoodbanks.org/virginians-facing-hunger-insights-from-feeding-americas-map-the-meal-gap-report/" target="_blank" rel="noopener noreferrer" className="text-accent underline underline-offset-2">Virginia Federation of Food Banks</a> reports an 11.1% hunger rate — 1 in 9 residents. Over 854,000 Virginians rely on SNAP, and 252,480 children experience food insecurity.
+                {t(lang, "virginiaDesc")}
               </p>
             </div>
           </RevealSection>
@@ -183,13 +183,13 @@ export default function Home() {
           <SectionLabel label="Upcoming Events" number={3} />
           <div className="flex items-end justify-between gap-4 mb-10">
             <h2 className="font-heading text-2xl md:text-3xl text-foreground">
-              Distribution Events
+              {t(lang, "distributionEvents")}
             </h2>
             <Link
               to="/events"
               className="font-heading text-sm text-muted-foreground hover:text-accent transition-colors flex-shrink-0"
             >
-              View All →
+              {t(lang, "viewAll")}
             </Link>
           </div>
         </RevealSection>

@@ -3,6 +3,8 @@ import { MapPin, Search, X } from "lucide-react";
 import RevealSection from "../components/RevealSection";
 import EventCard from "../components/EventCard";
 import { foodEvents } from "@/data/foodData";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 
 function getSearchOptions(events) {
   const opts = new Map();
@@ -14,6 +16,7 @@ function getSearchOptions(events) {
 }
 
 export default function Families() {
+  const { lang } = useLanguage();
   const events = foodEvents;
   const searchOptions = getSearchOptions(events);
   const [query, setQuery] = useState("");
@@ -54,8 +57,8 @@ export default function Families() {
   return (
     <div className="min-h-screen pt-24 md:pt-28">
       <section className="px-[8vw] pb-8">
-        <h1 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">Find Food Near You</h1>
-        <p className="font-body text-base text-muted-foreground mt-3 max-w-xl leading-relaxed">Search verified food distribution sites across DC, Maryland, and Virginia.</p>
+        <h1 className="font-heading text-3xl md:text-5xl leading-tight text-foreground">{t(lang, "findFood")}</h1>
+        <p className="font-body text-base text-muted-foreground mt-3 max-w-xl leading-relaxed">{t(lang, "searchDesc")}</p>
 
         {/* Search bar — right under the title */}
         <div className="relative mt-6 max-w-lg">
@@ -63,7 +66,7 @@ export default function Families() {
           <input
             ref={inputRef}
             type="text"
-            placeholder="Type a ZIP code or city..."
+            placeholder={t(lang, "searchPlaceholder")}
             value={query}
             onChange={(e) => { setQuery(e.target.value); setActiveSearch(e.target.value); setShowDropdown(true); }}
             onFocus={() => setShowDropdown(true)}
@@ -82,7 +85,7 @@ export default function Families() {
         </div>
         {activeSearch && (
           <button onClick={handleClear} className="mt-3 flex items-center gap-1 font-body text-xs text-muted-foreground hover:text-accent transition-colors">
-            <X className="w-3 h-3" /> Clear search
+            <X className="w-3 h-3" /> {t(lang, "clearSearch")}
           </button>
         )}
       </section>
@@ -90,7 +93,7 @@ export default function Families() {
       {/* Results header */}
       {activeSearch && (
         <div className="px-[8vw] py-4 border-y border-border/50 bg-card/50">
-          <span className="font-body text-sm text-foreground">{filtered.length} result{filtered.length !== 1 ? "s" : ""} for "{activeSearch}"</span>
+          <span className="font-body text-sm text-foreground">{filtered.length} {filtered.length !== 1 ? t(lang, "results") : t(lang, "result")} for "{activeSearch}"</span>
         </div>
       )}
 
@@ -98,8 +101,8 @@ export default function Families() {
       <section className="px-[8vw] py-8 pb-24">
         {activeSearch && filtered.length === 0 ? (
           <div className="text-center py-20">
-            <p className="font-heading text-xl text-muted-foreground">No events found for "{activeSearch}"</p>
-            <p className="font-body text-sm text-muted-foreground mt-2">Try a different ZIP code or city name</p>
+            <p className="font-heading text-xl text-muted-foreground">{t(lang, "noResults")} for "{activeSearch}"</p>
+            <p className="font-body text-sm text-muted-foreground mt-2">{t(lang, "tryDifferent")}</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

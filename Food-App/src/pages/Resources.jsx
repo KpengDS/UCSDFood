@@ -3,6 +3,8 @@ import { ExternalLink, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import SectionLabel from "../components/SectionLabel";
 import RevealSection from "../components/RevealSection";
+import { useLanguage } from "@/lib/LanguageContext";
+import { t } from "@/data/translations";
 
 const CATEGORIES = ["All", "Data & Maps", "Demographics", "Directories", "Food Pantries", "Government"];
 
@@ -274,6 +276,7 @@ const RESOURCES = [
 ];
 
 export default function Resources() {
+  const { lang } = useLanguage();
   const [activeCategory, setActiveCategory] = useState("All");
   const [search, setSearch] = useState("");
 
@@ -291,9 +294,9 @@ export default function Resources() {
     <div className="min-h-screen pt-24 md:pt-32">
       <section className="px-[8vw] pb-16 md:pb-24">
         <RevealSection>
-          <SectionLabel label="Data Sources" number={1} />
+          <SectionLabel label={t(lang, "dataSources")} number={1} />
           <h1 className="font-heading text-[10vw] md:text-[5vw] uppercase leading-[0.85] tracking-tighter text-foreground">
-            Source Directory
+            {t(lang, "sourceDirectory")}
           </h1>
           <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">
             Every data point on Sustainable Food Hub comes from a publicly available, verifiable source. Below are the datasets, directories, government portals, and nonprofit tools that power this platform.
@@ -305,7 +308,7 @@ export default function Resources() {
             <div className="relative max-w-md flex-1">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input
-                placeholder="Search resources..."
+                placeholder={t(lang, "searchResources")}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 className="pl-12 bg-secondary border-border text-foreground placeholder:text-muted-foreground font-body h-12"

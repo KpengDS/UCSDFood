@@ -32,35 +32,40 @@ function Footer() {
         </div>
         <div className="md:col-span-3 md:col-start-7">
           <h4 className="font-heading text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Index
+            {t(lang, "index")}
           </h4>
           <div className="flex flex-col gap-2">
-            {["Events", "Families", "Donors", "Volunteers"].map((item) => (
+            {[
+              { label: t(lang, "navEvents"), path: "/events" },
+              { label: t(lang, "navFindFood"), path: "/families" },
+              { label: t(lang, "navDonors"), path: "/donors" },
+              { label: t(lang, "navVolunteers"), path: "/volunteers" },
+            ].map((item) => (
               <a
-                key={item}
-                href={`/${item.toLowerCase()}`}
+                key={item.path}
+                href={item.path}
                 className="font-body text-sm text-foreground hover:text-accent transition-colors focus:outline-2 focus:outline-foreground"
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
         </div>
         <div className="md:col-span-3">
           <h4 className="font-heading text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Contact
+            {t(lang, "contact")}
           </h4>
           <a
             href="/inquiry"
             className="font-body text-sm text-foreground hover:text-accent transition-colors focus:outline-2 focus:outline-foreground"
           >
-            Submit an Inquiry →
+            {t(lang, "submitInquiry")}
           </a>
         </div>
       </div>
       <div className="mt-16 pt-8 border-t border-border">
         <p className="font-heading text-xs uppercase tracking-widest text-muted-foreground">
-          © {new Date().getFullYear()} Sustainable Food Hub — Built with public data from Feeding America, Maryland Food Bank, Capital Area Food Bank, and government open data portals.
+          © {new Date().getFullYear()} {t(lang, "siteName")}
         </p>
         <p className="font-body text-[10px] text-muted-foreground mt-3 leading-relaxed">
           Images sourced from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Unsplash</a> under the Unsplash License (free for commercial and noncommercial use). Data sources cited on the <a href="/resources" className="underline hover:text-foreground">Resources</a> page.

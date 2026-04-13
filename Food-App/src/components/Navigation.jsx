@@ -70,7 +70,7 @@ export default function Navigation() {
             </Link>
           )}
           <Link to="/" className="font-heading text-lg md:text-xl text-foreground hover:text-accent transition-colors">
-            Sustainable Food Hub
+            {t(lang, "siteName")}
           </Link>
         </div>
         <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function Navigation() {
               className="font-heading text-lg md:text-xl text-foreground"
               onClick={() => setIsOpen(false)}
             >
-              Sustainable Food Hub
+              {t(lang, "siteName")}
             </Link>
             <button
               onClick={() => setIsOpen(false)}
