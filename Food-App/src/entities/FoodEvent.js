@@ -1,0 +1,31 @@
+export const schema = {
+  name: 'FoodEvent',
+  type: 'object',
+  properties: {
+    title:                { type: 'string', description: 'Name of the food distribution event' },
+    description:          { type: 'string', description: 'Detailed description of the event' },
+    organizer:            { type: 'string', description: 'Name of the organizing group or agency' },
+    event_date:           { type: 'string', format: 'date-time', description: 'Date and time of the event' },
+    end_date:             { type: 'string', format: 'date-time', description: 'End date and time of the event' },
+    location_name:        { type: 'string', description: 'Name of the venue' },
+    address:              { type: 'string', description: 'Full street address' },
+    city:                 { type: 'string', description: 'City' },
+    state:                { type: 'string', description: 'State', default: 'MD' },
+    zip_code:             { type: 'string', description: 'ZIP code' },
+    eligibility:          { type: 'string', description: 'Who is eligible to receive food' },
+    food_types:           { type: 'array', items: { type: 'string' }, description: 'Types of food available' },
+    is_recurring:         { type: 'boolean', description: 'Whether this event repeats regularly' },
+    recurrence_pattern:   { type: 'string', description: 'How often the event recurs' },
+    needs_volunteers:     { type: 'boolean', description: 'Whether volunteers are needed' },
+    accepts_donations:    { type: 'boolean', description: 'Whether donations are accepted' },
+    contact_email:        { type: 'string', description: 'Contact email for the event' },
+    contact_phone:        { type: 'string', description: 'Contact phone number' },
+    website_url:          { type: 'string', description: 'External website or source URL' },
+    image_url:            { type: 'string', description: 'Image URL for the event' },
+    status:               { type: 'string', enum: ['upcoming', 'active', 'completed', 'cancelled'], default: 'upcoming' },
+    transportation_notes: { type: 'string', description: 'Notes about transportation or accessibility' },
+  },
+  required: ['title', 'event_date', 'address', 'city'],
+};
+
+export default { schema };
