@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import SectionLabel from "../components/SectionLabel";
 import RevealSection from "../components/RevealSection";
 
-const CATEGORIES = ["All", "Data & Maps", "Demographics", "Directories", "Food Pantries"];
+const CATEGORIES = ["All", "Data & Maps", "Demographics", "Directories", "Food Pantries", "Government"];
 
 const RESOURCES = [
   {
@@ -157,6 +157,120 @@ const RESOURCES = [
     description: "USDA agency administering federal nutrition assistance programs including SNAP, WIC, and school meals.",
     category: "Demographics",
   },
+  {
+    name: "PG County Food Pantry Services",
+    url: "https://www.princegeorgescountymd.gov/departments-offices/food-pantry-services",
+    description: "Three permanent county-operated food pantries in Landover, Hyattsville, and Temple Hills. No registration required. Serves ~300 residents daily per location.",
+    category: "Food Pantries",
+  },
+  {
+    name: "PG County Food Equity Council — Pantry Listings",
+    url: "https://pgcfec.org/resources/find-food-food-pantry-listings/",
+    description: "Directory of food assistance providers in Prince George's County. Includes SNAP application help, WIC info, and 30+ community pantries.",
+    category: "Directories",
+  },
+  {
+    name: "Montgomery County Food Council — Resource Map",
+    url: "https://mocofoodcouncil.org/map/",
+    description: "Interactive directory of 90+ food assistance organizations in Montgomery County. Searchable by location, food type, accessibility, and dietary needs.",
+    category: "Directories",
+  },
+  {
+    name: "USDA SNAP Retailer Locator Map",
+    url: "https://usda-fns.maps.arcgis.com/apps/webappviewer/index.html?id=15e1c457b56c4a729861d015cd626a23",
+    description: "Interactive USDA map of authorized SNAP retailers nationwide. Find stores and farmers markets accepting EBT benefits by location.",
+    category: "Data & Maps",
+  },
+  {
+    name: "EPA Excess Food Opportunities Map",
+    url: "https://www.epa.gov/sustainable-management-food/excess-food-opportunities-map",
+    description: "Maps 960,000+ potential food generators and 15,000+ recipients to support diversion of excess food from landfills. Covers industrial, commercial, and institutional sectors.",
+    category: "Data & Maps",
+  },
+  {
+    name: "Maryland Community Business Compass",
+    url: "https://compass.maryland.gov/map/",
+    description: "GIS-based mapping tool providing data on Maryland communities, businesses, and services. Useful for regional food access analysis and infrastructure planning.",
+    category: "Data & Maps",
+  },
+  {
+    name: "Maryland Dept of Agriculture",
+    url: "https://mda.maryland.gov/Pages/default.aspx",
+    description: "State agency overseeing agricultural programs including the Maryland Food and Agricultural Resiliency Mechanism (MFARM) grant and farmers market guides.",
+    category: "Government",
+  },
+  {
+    name: "Maryland Hunger Map",
+    url: "https://mdfoodbank.org/hunger-in-maryland/maryland-hunger-map/",
+    description: "Interactive map from the Maryland Food Bank showing food insecurity levels, distribution sites, and demographic data across all Maryland counties.",
+    category: "Data & Maps",
+  },
+  {
+    name: "UMD Extension — Food Access Resources",
+    url: "https://extension.umd.edu/resource/food-access-resources",
+    description: "Compilation of food access resources for Maryland including SNAP-Ed recipes, pantry gardens, farm-to-food-assistance programs, and county food policy councils.",
+    category: "Directories",
+  },
+  {
+    name: "211 Maryland — Food Pantry Search",
+    url: "https://search.211md.org/search?query=food+pantry",
+    description: "Free statewide social services directory with 10,000+ listings. Search for food pantries, meal programs, WIC, SNAP assistance, and emergency food by location.",
+    category: "Directories",
+  },
+  {
+    name: "U.S. Census Bureau — American Community Survey",
+    url: "https://data.census.gov/",
+    description: "Demographic data including income, poverty rates, and household characteristics. Essential for identifying communities vulnerable to food insecurity.",
+    category: "Demographics",
+  },
+  {
+    name: "Maryland Open Data Portal",
+    url: "https://opendata.maryland.gov/",
+    description: "Statewide open datasets including demographics, community resources, and environmental data supporting food access analysis.",
+    category: "Government",
+  },
+  {
+    name: "DC Open Data Portal",
+    url: "https://opendata.dc.gov/",
+    description: "Washington DC datasets on community resources, food assistance programs, demographics, and public services.",
+    category: "Government",
+  },
+  {
+    name: "Virginia Open Data Portal",
+    url: "https://data.virginia.gov/",
+    description: "Virginia state datasets on community services, public programs, and regional infrastructure. Over 854,000 Virginians are enrolled in SNAP.",
+    category: "Government",
+  },
+  {
+    name: "PG County Open Data Portal",
+    url: "https://data.princegeorgescountymd.gov/",
+    description: "Local datasets including schools, public facilities, community resources, and neighborhood statistics for Prince George's County.",
+    category: "Government",
+  },
+  {
+    name: "Caroline Better Together — Food Pantries",
+    url: "https://carolinebettertogether.org/food-pantries/",
+    description: "Directory of food pantries serving Caroline County on Maryland's Eastern Shore.",
+    category: "Food Pantries",
+  },
+  {
+    name: "MD DHS — Emergency Food Assistance Program (TEFAP)",
+    url: "https://dhs.maryland.gov/emergency-food-assistance-program/",
+    description: "Federal program providing USDA foods to states for distribution through food banks. Allocation based on population, poverty, and unemployment rates.",
+    category: "Government",
+  },
+  {
+    name: "Feeding America — Hunger in Maryland",
+    url: "https://www.feedingamerica.org/hunger-in-america/maryland",
+    description: "State-level food insecurity data for Maryland including county breakdowns, SNAP participation rates, and economic impact of food assistance programs.",
+    category: "Demographics",
+  },
+  {
+    name: "PG County Healthy Food Priority Areas Dashboard",
+    url: "https://princegeorges.maps.arcgis.com/apps/dashboards/9f9202c51cc345ab9e0e1aa21a23bb76",
+    description: "ArcGIS dashboard mapping healthy food access priority areas across Prince George's County, MD.",
+    category: "Data & Maps",
+  },
 ];
 
 export default function Resources() {
@@ -177,13 +291,12 @@ export default function Resources() {
     <div className="min-h-screen pt-24 md:pt-32">
       <section className="px-[8vw] pb-16 md:pb-24">
         <RevealSection>
-          <SectionLabel label="Resources" number={1} />
+          <SectionLabel label="Data Sources" number={1} />
           <h1 className="font-heading text-[10vw] md:text-[5vw] uppercase leading-[0.85] tracking-tighter text-foreground">
-            Food Resource Directory
+            Source Directory
           </h1>
           <p className="font-body text-base text-muted-foreground mt-4 max-w-xl leading-relaxed">
-            A curated collection of data tools, directories, and food assistance programs across
-            Maryland and the Washington DC metro area.
+            Every data point on Sustainable Food Hub comes from a publicly available, verifiable source. Below are the datasets, directories, government portals, and nonprofit tools that power this platform.
           </p>
         </RevealSection>
 

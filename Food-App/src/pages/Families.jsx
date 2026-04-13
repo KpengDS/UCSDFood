@@ -25,7 +25,7 @@ export default function Families() {
             <RevealSection>
               <SectionLabel label="For Families" number={1} />
               <h1 className="font-heading text-[10vw] md:text-[4vw] uppercase leading-[0.85] tracking-tighter text-foreground">Find Food Near You</h1>
-              <p className="font-body text-base text-muted-foreground mt-6 leading-relaxed max-w-lg">Search for food distribution events by ZIP code or city. We connect you with free food resources in Maryland and Washington DC.</p>
+              <p className="font-body text-base text-muted-foreground mt-6 leading-relaxed max-w-lg">Search for verified food distribution sites by ZIP code or city. Data sourced from the Maryland Food Bank, Capital Area Food Bank, PG County Social Services, and other public directories.</p>
             </RevealSection>
             <RevealSection delay={0.2}>
               <div className="relative mt-10 max-w-sm">

@@ -21,11 +21,10 @@ function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
         <div className="md:col-span-5">
           <h4 className="font-heading text-xs uppercase tracking-widest text-muted-foreground mb-4">
-            Nourish DC/MD
+            Sustainable Food Hub
           </h4>
           <p className="font-body text-sm text-muted-foreground leading-relaxed max-w-sm">
-            Connecting families in Maryland and metropolitan Washington, DC with
-            food resources, distribution events, and community support.
+            A data-driven platform connecting residents across Maryland, Virginia, and Washington DC with verified food assistance programs, distribution events, and volunteer opportunities.
           </p>
         </div>
         <div className="md:col-span-3 md:col-start-7">
@@ -58,7 +57,7 @@ function Footer() {
       </div>
       <div className="mt-16 pt-8 border-t border-border">
         <p className="font-heading text-xs uppercase tracking-widest text-muted-foreground">
-          © {new Date().getFullYear()} Nourish — Food Resource Network
+          © {new Date().getFullYear()} Sustainable Food Hub — Built with public data from Feeding America, Maryland Food Bank, Capital Area Food Bank, and government open data portals.
         </p>
       </div>
     </footer>

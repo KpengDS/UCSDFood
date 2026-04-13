@@ -96,16 +96,15 @@ export default function Home() {
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           >
             <span className="font-heading text-xs uppercase tracking-[0.4em] text-accent block mb-6">
-              Connecting Communities to Food
+              DC · Maryland · Virginia
             </span>
             <h1 className="font-heading text-[12vw] md:text-[7vw] uppercase leading-[0.85] tracking-tighter text-foreground">
-              No One Should
+              Sustainable
               <br />
-              Go Hungry
+              Food Hub
             </h1>
             <p className="font-body text-base md:text-lg text-muted-foreground mt-6 max-w-xl mx-auto leading-relaxed">
-              A platform bridging the gap between food resources and the communities that need them
-              across Maryland and the DC metro area.
+              Real-time food assistance data aggregated from public sources — helping families find meals, donors target impact, and volunteers show up where it matters.
             </p>
           </motion.div>
 
@@ -145,18 +144,16 @@ export default function Home() {
       {/* Mission */}
       <section id="mission" className="px-[8vw] py-24 md:py-40">
         <RevealSection>
-          <SectionLabel label="Our Mission" number={1} />
+          <SectionLabel label="Why This Exists" number={1} />
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
             <div className="md:col-span-7">
               <h2 className="font-heading text-[8vw] md:text-[3.5vw] uppercase leading-[0.85] tracking-tighter text-foreground">
-                Building a food-secure future for every community
+                Food assistance data is scattered — we centralize it
               </h2>
             </div>
             <div className="md:col-span-4 md:col-start-9 flex items-end">
               <p className="font-body text-base text-muted-foreground leading-relaxed">
-                We aggregate food distribution events, connect volunteers with organizations, and
-                help donors find where their contributions matter most. One platform, many pathways
-                to fight hunger.
+                Information about food pantries, distribution events, and assistance programs is spread across dozens of government portals, nonprofit sites, and community boards. Sustainable Food Hub aggregates verified public data from sources like the Maryland Food Bank, Capital Area Food Bank, USDA, and county social services into one searchable interface.
               </p>
             </div>
           </div>
@@ -232,35 +229,35 @@ export default function Home() {
           </div>
           <div className="md:col-span-6 md:col-start-7 flex flex-col justify-center">
             <RevealSection delay={0.1}>
-              <SectionLabel label="The Challenge" number={4} />
+              <SectionLabel label="The Data" number={4} />
               <h2 className="font-heading text-2xl md:text-4xl uppercase leading-[0.85] tracking-tighter text-foreground">
-                47 million Americans faced hunger in 2023
+                The scale of food insecurity in the DMV
               </h2>
               <p className="font-body text-base text-muted-foreground mt-6 leading-relaxed">
-                According to Feeding America's <a href="https://feedingamerica.org/about-us/press-room/Map-the-Meal-Gap-2025" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Map the Meal Gap 2025</a> study, 47 million people including 14 million children experienced food insecurity in 2023 — the highest level in nearly a decade. In Maryland, 4 in 10 families can't afford the high cost of living.
+                Feeding America's <a href="https://feedingamerica.org/about-us/press-room/Map-the-Meal-Gap-2025" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Map the Meal Gap 2025</a> estimates that 47 million people experienced food insecurity nationally in 2023. In the DMV specifically, a <a href="https://health.georgetown.edu/news-story/new-report-from-capital-area-food-bank-identifies-troubling-trends-in-food-insecurity/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Capital Area Food Bank report</a> found 37% of households — roughly 1.5 million people — faced food insecurity in 2024.
               </p>
               <p className="font-body text-base text-muted-foreground mt-4 leading-relaxed">
-                The national food budget shortfall is $32 billion — people facing hunger need an extra $22.37 per week on average. Our platform aggregates data from the <a href="https://mdfoodbank.org/find-food/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Maryland Food Bank</a>'s 286+ partner sites and public datasets to connect families with resources.
+                The <a href="https://mdfoodbank.org/hunger-in-maryland/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Maryland Food Bank</a> reports that 1 in 3 Marylanders face hunger, while the <a href="https://vafoodbanks.org/virginians-facing-hunger-insights-from-feeding-americas-map-the-meal-gap-report/" target="_blank" rel="noopener noreferrer" className="text-accent hover:text-foreground underline underline-offset-2">Virginia Federation of Food Banks</a> reports an 11.1% hunger rate with over 252,000 children affected. Sustainable Food Hub pulls from these sources and 15+ public datasets to surface actionable information.
               </p>
             </RevealSection>
             <RevealSection delay={0.2}>
               <div className="mt-8 grid grid-cols-3 gap-4">
                 <div className="border-t border-border pt-4">
-                  <span className="font-heading text-2xl md:text-3xl text-accent">47M</span>
+                  <span className="font-heading text-2xl md:text-3xl text-accent">1.5M</span>
                   <p className="font-body text-xs text-muted-foreground mt-1">
-                    Americans faced food insecurity in 2023
+                    DMV residents food-insecure (CAFB 2024)
                   </p>
                 </div>
                 <div className="border-t border-border pt-4">
-                  <span className="font-heading text-2xl md:text-3xl text-accent">14M</span>
+                  <span className="font-heading text-2xl md:text-3xl text-accent">286+</span>
                   <p className="font-body text-xs text-muted-foreground mt-1">
-                    Children experienced hunger
+                    MD Food Bank partner sites
                   </p>
                 </div>
                 <div className="border-t border-border pt-4">
-                  <span className="font-heading text-2xl md:text-3xl text-accent">$32B</span>
+                  <span className="font-heading text-2xl md:text-3xl text-accent">854K</span>
                   <p className="font-body text-xs text-muted-foreground mt-1">
-                    National food budget shortfall
+                    Virginia SNAP recipients (VA Food Banks)
                   </p>
                 </div>
               </div>

@@ -39,7 +39,7 @@ export default function Navigation() {
           to="/"
           className="font-heading text-xs uppercase tracking-[0.3em] text-foreground focus:outline-2 focus:outline-foreground"
         >
-          Nourish
+          Sustainable Food Hub
         </Link>
         <button
           onClick={() => setIsOpen(true)}
@@ -65,7 +65,7 @@ export default function Navigation() {
                 to="/"
                 className="font-heading text-xs uppercase tracking-[0.3em] text-foreground focus:outline-2 focus:outline-foreground"
               >
-                Nourish
+                Sustainable Food Hub
               </Link>
               <button
                 onClick={() => setIsOpen(false)}
