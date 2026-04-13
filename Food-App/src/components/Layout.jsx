@@ -59,6 +59,9 @@ function Footer() {
         <p className="font-heading text-xs uppercase tracking-widest text-muted-foreground">
           © {new Date().getFullYear()} Sustainable Food Hub — Built with public data from Feeding America, Maryland Food Bank, Capital Area Food Bank, and government open data portals.
         </p>
+        <p className="font-body text-[10px] text-muted-foreground mt-3 leading-relaxed">
+          Images sourced from <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">Unsplash</a> under the Unsplash License (free for commercial and noncommercial use). Data sources cited on the <a href="/resources" className="underline hover:text-foreground">Resources</a> page.
+        </p>
       </div>
     </footer>
   );

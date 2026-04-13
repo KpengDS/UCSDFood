@@ -13,18 +13,18 @@ export default function StakeholderCard({
     <RevealSection delay={index * 0.1}>
       <Link
         to={linkTo}
-        className="group block border border-border hover:border-accent transition-colors duration-500 focus:outline-2 focus:outline-foreground"
+        className="group block h-full border border-border hover:border-accent rounded-md overflow-hidden transition-colors duration-300"
       >
-        <div className="relative overflow-hidden aspect-[4/3]">
+        <div className="relative overflow-hidden" style={{ height: "240px" }}>
           <img
             src={image}
             alt={title}
-            className="w-full h-full object-cover mono-to-color scale-105 group-hover:scale-100 transition-transform duration-700"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         </div>
-        <div className="p-6 md:p-8 flex items-start justify-between gap-4">
+        <div className="p-6 flex items-start justify-between gap-4">
           <div>
-            <h3 className="font-heading text-lg md:text-xl uppercase tracking-tight text-foreground group-hover:text-accent transition-colors">
+            <h3 className="font-heading text-base md:text-lg text-foreground group-hover:text-accent transition-colors">
               {title}
             </h3>
             <p className="font-body text-sm text-muted-foreground mt-2 leading-relaxed">

@@ -5,8 +5,9 @@ import SectionLabel from "../components/SectionLabel";
 import RevealSection from "../components/RevealSection";
 import { volunteerOpportunities } from "@/data/foodData";
 
+// Image from Unsplash (unsplash.com) — free under Unsplash License
 const VOLUNTEERS_IMG =
-  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80";
+  "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80"; // Joel Muniz
 
 export default function Volunteers() {
   const opportunities = volunteerOpportunities;
@@ -96,17 +97,6 @@ export default function Volunteers() {
                         {opp.organization_name}
                       </span>
                     </div>
-                    {opp.status && (
-                      <span
-                        className={`font-heading text-[10px] uppercase tracking-widest px-3 py-1 border flex-shrink-0 ${
-                          opp.status === "open"
-                            ? "border-accent text-accent"
-                            : "border-border text-muted-foreground"
-                        }`}
-                      >
-                        {opp.status}
-                      </span>
-                    )}
                   </div>
 
                   {opp.description && (

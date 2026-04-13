@@ -4,8 +4,9 @@ import SectionLabel from "../components/SectionLabel";
 import RevealSection from "../components/RevealSection";
 import { organizations } from "@/data/foodData";
 
+// Image from Unsplash (unsplash.com) — free under Unsplash License
 const DONORS_IMG =
-  "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80";
+  "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=800&q=80"; // Joel Muniz
 
 export default function Donors() {
   const orgs = organizations.filter((o) => o.accepts_food_donations || o.accepts_monetary_donations);
@@ -65,24 +66,33 @@ export default function Donors() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {orgs.map((org, i) => (
               <RevealSection key={org.id} delay={i * 0.05}>
-                <div className="group border border-border hover:border-accent transition-colors p-6 md:p-8">
+                <div className="group border border-border hover:border-accent rounded-md transition-colors p-6 md:p-8">
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h3 className="font-heading text-base uppercase tracking-tight text-foreground">{org.name}</h3>
+                      <h3 className="font-heading text-base text-foreground">{org.name}</h3>
                       <span className="font-heading text-[10px] uppercase tracking-widest text-accent mt-1 block">{org.type?.replace("_", " ")}</span>
                     </div>
+                  </div>
+                  {org.description && <p className="font-body text-sm text-muted-foreground mt-3 leading-relaxed">{org.description}</p>}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {org.accepts_food_donations && <span className="font-body text-[11px] text-accent px-3 py-1 border border-accent/40 rounded-full">Accepts Food</span>}
+                    {org.accepts_monetary_donations && <span className="font-body text-[11px] text-accent px-3 py-1 border border-accent/40 rounded-full">Accepts Money</span>}
+                  </div>
+                  {org.service_area && <p className="font-body text-xs text-muted-foreground mt-3">Serves: {org.service_area}</p>}
+                  {org.contact_phone && <p className="font-body text-xs text-muted-foreground mt-1">Phone: {org.contact_phone}</p>}
+                  <div className="flex flex-wrap gap-3 mt-5 pt-4 border-t border-border/50">
                     {org.website_url && (
-                      <a href={org.website_url} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors">
-                        <ArrowUpRight className="w-4 h-4" />
+                      <a href={org.website_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 font-heading text-xs px-4 py-2 bg-accent text-accent-foreground rounded-md hover:bg-accent/90 transition-all">
+                        <ArrowUpRight className="w-3 h-3" />
+                        Donate / Visit Site
+                      </a>
+                    )}
+                    {org.contact_phone && (
+                      <a href={`tel:${org.contact_phone}`} className="inline-flex items-center gap-1.5 font-heading text-xs px-4 py-2 border border-border text-foreground rounded-md hover:border-accent hover:text-accent transition-all">
+                        Call
                       </a>
                     )}
                   </div>
-                  {org.description && <p className="font-body text-sm text-muted-foreground mt-3 leading-relaxed">{org.description}</p>}
-                  <div className="flex gap-3 mt-4">
-                    {org.accepts_food_donations && <span className="font-heading text-[10px] uppercase tracking-widest text-accent px-3 py-1 border border-accent">Food</span>}
-                    {org.accepts_monetary_donations && <span className="font-heading text-[10px] uppercase tracking-widest text-accent px-3 py-1 border border-accent">Monetary</span>}
-                  </div>
-                  {org.service_area && <p className="font-body text-xs text-muted-foreground mt-4">Serves: {org.service_area}</p>}
                 </div>
               </RevealSection>
             ))}
